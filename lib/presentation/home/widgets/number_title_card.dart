@@ -1,12 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:netflix_clone/core/constants/constants.dart';
 import 'package:netflix_clone/presentation/home/widgets/number_card.dart';
 import 'package:netflix_clone/presentation/widgets/main_title.dart';
 
 class NumberTitleCard extends StatelessWidget {
+  final List<String> postersList;
   final String title;
   const NumberTitleCard({
     super.key,
+    required this.postersList,
     required this.title,
   });
 
@@ -26,7 +30,10 @@ class NumberTitleCard extends StatelessWidget {
               10,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                child: NumberCard(index: index),
+                child: NumberCard(
+                  index: index,
+                  imageUrl: postersList[index],
+                ),
               ),
             ),
           ),

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NumberCard extends StatelessWidget {
+  final String imageUrl;
   final int index;
   const NumberCard({
     super.key,
+    required this.imageUrl,
     required this.index,
   });
 
@@ -24,9 +26,8 @@ class NumberCard extends StatelessWidget {
               height: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                  image: NetworkImage(
-                      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uwrQHMnXD2DA1rvaMZk4pavZ3CY.jpg"),
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),

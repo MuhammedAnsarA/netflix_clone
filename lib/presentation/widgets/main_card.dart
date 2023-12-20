@@ -1,8 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class MainCardd extends StatelessWidget {
+  final String imageUrl;
   const MainCardd({
     super.key,
+    required this.imageUrl,
   });
 
   @override
@@ -12,9 +15,8 @@ class MainCardd extends StatelessWidget {
       height: 200,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: const DecorationImage(
-          image: NetworkImage(
-              "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/91wVL2amQouWhbMfvrVeFNrrHmR.jpg"),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl),
           fit: BoxFit.cover,
         ),
       ),

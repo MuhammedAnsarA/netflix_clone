@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/hot_and_new/hot_and_new_bloc.dart';
+
 import 'package:netflix_clone/core/colors/colors.dart';
-import 'package:netflix_clone/core/constants/constants.dart';
 import 'package:netflix_clone/presentation/home/widgets/custom_button_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
-  const BackgroundCard({super.key});
+  final String imageUrl;
+  const BackgroundCard({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          height: 600,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(kMainImage),
-              fit: BoxFit.cover,
-            ),
-          ),
+        BlocBuilder<HotAndNewBloc, HotAndNewState>(
+          builder: (context, state) {
+            return Container(
+              width: double.infinity,
+              height: 600,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
         ),
         Positioned(
           bottom: 10,

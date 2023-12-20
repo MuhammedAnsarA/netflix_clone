@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants/constants.dart';
 import 'package:netflix_clone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netflix_clone/presentation/widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
+
   const ComingSoonWidget({
     super.key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   });
 
   @override
@@ -14,7 +28,7 @@ class ComingSoonWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           width: 50,
           height: 500,
           child: Column(
@@ -22,12 +36,12 @@ class ComingSoonWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "FEB",
-                style: TextStyle(color: Colors.grey),
+                month,
+                style: const TextStyle(color: Colors.grey),
               ),
               Text(
-                "11",
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                   color: kWhiteColor,
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
@@ -40,19 +54,24 @@ class ComingSoonWidget extends StatelessWidget {
         SizedBox(
           width: size.width - 50,
           height: 450,
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              VideoWidget(imageUrl: kComingSoonTempImage),
+              VideoWidget(imageUrl: posterPath),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "TALL GIRL 2",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 10),
+                    ),
                   ),
-                  Spacer(),
-                  Row(
+                  const Spacer(),
+                  const Row(
                     children: [
                       CustomButtonWidget(
                         icon: Icons.notifications,
@@ -74,16 +93,21 @@ class ComingSoonWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Coming on Friday"),
+              Text("Coming on $day $month"),
               kHeight,
               Text(
-                "TALL GIRL 2",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                movieName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               kHeight,
               Text(
-                "Landing the lead in the school musical is a \n dream come true for Jodi, until the pressure \n sends her confidence -- and her relationship -- \n into a tailspin.",
-                style: TextStyle(color: Colors.grey),
+                description,
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(color: Colors.grey),
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 import 'package:netflix_clone/core/constants/constants.dart';
@@ -5,9 +6,11 @@ import 'package:netflix_clone/presentation/widgets/main_card.dart';
 import 'package:netflix_clone/presentation/widgets/main_title.dart';
 
 class MainTitleCard extends StatelessWidget {
+  final List<String> posterList;
   final String title;
   const MainTitleCard({
     super.key,
+    required this.posterList,
     required this.title,
   });
 
@@ -23,10 +26,10 @@ class MainTitleCard extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              10,
-              (index) => const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                child: MainCardd(),
+              posterList.length,
+              (index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                child: MainCardd(imageUrl: posterList[index]),
               ),
             ),
           ),

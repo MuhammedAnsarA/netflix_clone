@@ -11,14 +11,32 @@ class VideoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          height: 200,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(7),
-            image: DecorationImage(
-              image: NetworkImage(imageUrl),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(7),
+          child: SizedBox(
+            width: double.infinity,
+            height: 200,
+            child: Image.network(
+              imageUrl,
               fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  );
+                }
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return const Center(
+                    child: Icon(
+                  Icons.wifi,
+                  color: Colors.red,
+                ));
+              },
             ),
           ),
         ),

@@ -24,8 +24,13 @@ TextStyle kHomeTitleText = const TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const loadingImage =
+    "https://e7.pngegg.com/pngimages/26/80/png-clipart-computer-icons-spinner-progress-bar-loading-screen-spinner-miscellaneous-text.png";
+
 const kEveryonesWatchingTempImage =
     "https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/feSiISwgEpVzR1v3zv2n2AU4ANJ.jpg";
 
 const kComingSoonTempImage =
     "https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/yOm993lsJyPmBodlYjgpPwBjXP9.jpg";
+
+const imageAppendUrl = "https://image.tmdb.org/t/p/w500";

@@ -1,34 +1,44 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:netflix_clone/core/constants/constants.dart';
 import 'package:netflix_clone/presentation/home/widgets/custom_button_widget.dart';
 import 'package:netflix_clone/presentation/widgets/video_widget.dart';
 
 class EveronesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String description;
   const EveronesWatchingWidget({
     super.key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kHeight,
         Text(
-          "Friends",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          movieName,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         kHeight,
         Text(
-          "This hit sitcome follows the merry misadventures of six \n 20-something pals as they navigate the pitfalls of \n work, life and love in 1990s Manhattan.",
-          style: TextStyle(color: Colors.grey),
+          description,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 4,
+          style: const TextStyle(color: Colors.grey),
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
-        VideoWidget(imageUrl: kEveryonesWatchingTempImage),
+        VideoWidget(imageUrl: posterPath),
         kHeight,
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             CustomButtonWidget(
