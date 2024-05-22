@@ -161,7 +161,7 @@ class Section3 extends StatelessWidget {
           child: const Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
             child: Text(
-              "See what you can download",
+              "See Downloads",
               style: TextStyle(
                 color: kBlackColor,
                 fontWeight: FontWeight.bold,
